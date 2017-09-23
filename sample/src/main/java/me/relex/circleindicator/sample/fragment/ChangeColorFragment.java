@@ -1,5 +1,6 @@
 package me.relex.circleindicator.sample.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,9 +21,10 @@ public class ChangeColorFragment extends Fragment {
     }
 
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        ViewPager viewpager = (ViewPager) view.findViewById(R.id.viewpager);
-        CircleIndicator indicator = (CircleIndicator) view.findViewById(R.id.indicator);
+        ViewPager viewpager = view.findViewById(R.id.viewpager);
+        CircleIndicator indicator = view.findViewById(R.id.indicator);
         viewpager.setAdapter(new SamplePagerAdapter());
+        indicator.setIndicatorBackgroundTint(Color.BLUE);
         indicator.setViewPager(viewpager);
     }
 }

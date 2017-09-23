@@ -6,8 +6,11 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.annotation.AnimatorRes;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -29,6 +32,7 @@ public class CircleIndicator extends LinearLayout {
     private int mAnimatorResId = R.animator.circle_indicator_scale;
     private int mAnimatorReverseResId = 0;
     private int mIndicatorBackgroundResId = R.drawable.circle_indicator_default_background;
+    private int mIndicatorBackgroundTint = Color.TRANSPARENT;
     private int mIndicatorUnselectedBackgroundResId = R.drawable.circle_indicator_default_background;
     private Animator mAnimatorOut;
     private Animator mAnimatorIn;
@@ -123,6 +127,10 @@ public class CircleIndicator extends LinearLayout {
 
     public void setIndicatorBackground(@DrawableRes int res) {
         mIndicatorBackgroundResId = res;
+    }
+
+    public void setIndicatorBackgroundTint(@ColorInt int color) {
+        mIndicatorBackgroundTint = color;
     }
 
     public void setIndicatorUnselectedBackground(@DrawableRes int res) {
@@ -258,16 +266,16 @@ public class CircleIndicator extends LinearLayout {
 
         for (int i = 0; i < count; i++) {
             if (currentItem == i) {
-                addIndicator(orientation, mIndicatorBackgroundResId, mImmediateAnimatorOut);
+                addIndicator(orientation, mIndicatorBackgroundResId, mImmediateAnimatorOut, true);
             } else {
                 addIndicator(orientation, mIndicatorUnselectedBackgroundResId,
-                        mImmediateAnimatorIn);
+                        mImmediateAnimatorIn, false);
             }
         }
     }
 
     private void addIndicator(int orientation, @DrawableRes int backgroundDrawableId,
-            Animator animator) {
+            Animator animator, boolean isSelected) {
         if (animator.isRunning()) {
             animator.end();
             animator.cancel();
@@ -275,6 +283,10 @@ public class CircleIndicator extends LinearLayout {
 
         View Indicator = new View(getContext());
         Indicator.setBackgroundResource(backgroundDrawableId);
+        if (mIndicatorBackgroundTint != Color.TRANSPARENT) {
+            Indicator.getBackground().setColorFilter(mIndicatorBackgroundTint, PorterDuff.Mode.MULTIPLY);
+        }
+
         addView(Indicator, mIndicatorWidth, mIndicatorHeight);
         LayoutParams lp = (LayoutParams) Indicator.getLayoutParams();
 
