@@ -22,3 +22,5 @@ android {
 dependencies {
     api "com.android.support:support-core-ui:$supportLibVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/Commit451/gradle-android-javadocs/1.0.0/gradle-android-javadocs.gradle'

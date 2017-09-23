@@ -16,6 +16,6 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="48dp"
         app:ci_animator="@animator/indicator_no_animator"
-        app:ci_drawable="@drawable/white_radius"
+        app:ci_drawable="@drawable/circle_indicator_default_background"
         app:ci_drawable_unselected="@drawable/black_radius"/>
 </FrameLayout>
