@@ -1,18 +1,10 @@
 CircleIndicator
 ===============
-A lightweight viewpager indicator like in nexus 5 launcher 
+A lightweight viewpager indicator
 
-[ ![Download](https://api.bintray.com/packages/ongakuer/maven/CircleIndicator/images/download.svg) ](https://bintray.com/ongakuer/maven/CircleIndicator/_latestVersion)
+[![Build Status](https://travis-ci.org/Jawnnypoo/CircleIndicator.svg?branch=master)](https://travis-ci.org/Jawnnypoo/CircleIndicator) [![](https://jitpack.io/v/Jawnnypoo/CircleIndicator.svg)](https://jitpack.io/#Jawnnypoo/CircleIndicator)
 
 ![CircleIndicator](/screenshot.gif)
-
-Gradle
-------------
-```groovy
-dependencies {
-    compile 'me.relex:circleindicator:1.2.2@aar'
-}
-```
 
 Usage
 --------
