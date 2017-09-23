@@ -20,7 +20,8 @@ import static android.support.v4.view.ViewPager.OnPageChangeListener;
 
 public class CircleIndicator extends LinearLayout {
 
-    private final static int DEFAULT_INDICATOR_WIDTH = 5;
+    private static final int DEFAULT_INDICATOR_WIDTH = 5;
+
     private ViewPager mViewpager;
     private int mIndicatorMargin = -1;
     private int mIndicatorWidth = -1;
@@ -246,17 +247,6 @@ public class CircleIndicator extends LinearLayout {
         }
     };
 
-    /**
-     * @deprecated User ViewPager addOnPageChangeListener
-     */
-    @Deprecated public void setOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
-        if (mViewpager == null) {
-            throw new NullPointerException("can not find Viewpager , setViewPager first");
-        }
-        mViewpager.removeOnPageChangeListener(onPageChangeListener);
-        mViewpager.addOnPageChangeListener(onPageChangeListener);
-    }
-
     private void createIndicators() {
         removeAllViews();
         int count = mViewpager.getAdapter().getCount();
@@ -308,7 +298,7 @@ public class CircleIndicator extends LinearLayout {
         }
     }
 
-    public int dip2px(float dpValue) {
+    private int dip2px(float dpValue) {
         final float scale = getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
